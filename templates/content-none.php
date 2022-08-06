@@ -4,7 +4,7 @@
 		<div class="title">
 			<h2><?php esc_html_e( 'Nothing Found', 'am' ); ?></h2>
 		</div>
-		
+
 		<div class="entry">
 			<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 

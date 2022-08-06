@@ -9,8 +9,3 @@ Install Steps:
 6. Activate widgets
 7. Make permission for Media folder - 0777 (writeable) Settings->Media or /wp-admin/options-media.php
 8. Custom Modules
-Homepage
-- Hero Module
-- title + text
-- Image + content
-- Blockquote
