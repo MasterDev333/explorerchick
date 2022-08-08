@@ -31,7 +31,7 @@ if ( post_password_required() ) { ?>
 	<?php $paginate_comments_links = paginate_comments_links( 'echo=0' ); ?>
 	<?php if ( ! empty( $paginate_comments_links ) ) : ?>
 	<div class="pagination">
-		<?php echo esc_html( $paginate_comments_links ); ?>
+		<?php echo $paginate_comments_links; ?>
 	</div>
 	<?php endif; ?>
 <?php endif; ?>

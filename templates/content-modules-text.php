@@ -31,7 +31,10 @@ if ( 'o' == $option ) {
 			?>
 			>
 		<?php endif ?>
-		<?php echo esc_html( $heading ); ?>
+		<?php
+			// Heading may contain other HTML tags, so ignore escaping validation here.
+			echo $heading;
+		?>
 		<?php if ( $tag ) : ?>
 			</<?php echo esc_attr( $tag ); ?>>
 		<?php endif ?>

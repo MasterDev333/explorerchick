@@ -50,20 +50,26 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 		 * Add Filters
 		 */
 		public function add_filters() {
-			add_filter( 'body_class', $this->body_class );
-			add_filter( 'mime_types', $this->mime_types );
-			add_filter( 'acf/settings/save_json', $this->acf_save_json );
-			add_filter( 'acf/settings/load_json', $this->acf_load_json );
+			add_filter( 'body_class', array( $this, 'body_class' ) );
+			add_filter( 'mime_types', array( $this, 'mime_types' ) );
+			// If ACF is installed load acf fields from local json
+			if ( ! class_exists( 'ACF' ) ) {
+				add_filter( 'acf/settings/save_json', array( $this, 'acf_save_json' ) );
+				add_filter( 'acf/settings/load_json', array( $this, 'acf_load_json' ) );
+			}
 		}
 
 		/**
 		 * Add actions
 		 */
 		public function add_actions() {
-			add_action( 'wp_head', $this->add_ajax_url );
-			add_action( 'init', $this->add_categories_to_pages );
-			add_action( 'acf/init', $this->acf_init );
-			add_action( 'login_enqueue_scripts', $this->login_enqueue_scripts );
+			add_action( 'wp_head', array( $this, 'add_ajax_url' ) );
+			add_action( 'init', array( $this, 'add_categories_to_pages' ) );
+			add_action( 'login_enqueue_scripts', array( $this, 'login_enqueue_scripts' ) );
+			// If ACF is installed load acf fields from local json
+			if ( ! class_exists( 'ACF' ) ) {
+				add_action( 'acf/init', array( $this, 'acf_init' ) );
+			}
 		}
 
 		/**
@@ -91,10 +97,12 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 			}
 
 			// Add acf custom body class
-			$body_class = get_field( 'body_class', get_queried_object_id() );
-			if ( $body_class ) {
-				$body_class = esc_attr( trim( $body_class ) );
-				$classes[]  = $body_class;
+			if ( ! class_exists( 'ACF' ) ) {
+				$body_class = get_field( 'body_class', get_queried_object_id() );
+				if ( $body_class ) {
+					$body_class = esc_attr( trim( $body_class ) );
+					$classes[]  = $body_class;
+				}
 			}
 			return $classes;
 		}
@@ -267,7 +275,7 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 					return $data;
 				}
 			}
-			echo esc_html( $data );
+			echo $data;
 		}
 
 	}
@@ -275,9 +283,3 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 	$extra = new Theme_Extra();
 	$extra->init();
 }
-
-
-
-
-
-

@@ -30,12 +30,12 @@ class Am_WP_Widget_Text extends WP_Widget {
 		extract( $args );
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 		$text  = apply_filters( 'widget_text', empty( $instance['text'] ) ? '' : $instance['text'], $instance );
-		echo esc_html( $before_widget );
+		echo $before_widget;
 		if ( ! empty( $title ) ) {
-			echo esc_html( $before_title ) . esc_html( $title ) . esc_html( $after_title ); } ?>
+			echo $before_title . $title . $after_title; } ?>
 			<div class="textwidget"><?php echo ! empty( $instance['filter'] ) ? esc_html( wpautop( $text ) ) : esc_html( $text ); ?></div>
 		<?php
-		echo esc_html( $after_widget );
+		echo $after_widget;
 	}
 
 	/**
