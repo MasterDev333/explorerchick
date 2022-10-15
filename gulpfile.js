@@ -61,7 +61,7 @@ gulp.task('scripts', () => {
 gulp.task('libs', () => {
   return gulp
     .src(['./assets/js/vendor/*.js', '!./assets/js/vendor/jquery-3.3.1.min.js'])
-    .pipe(order(['ScrollMagic.min.js', '*.js']))
+    .pipe(order(['jcf.js', '*.js']))
     .pipe(concat('libs.min.js'))
     .pipe(gulp.dest('./assets/js/'))
     .pipe(browserSync.stream());

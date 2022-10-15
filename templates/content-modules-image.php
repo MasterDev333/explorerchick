@@ -15,7 +15,7 @@ if ( isset( $v ) && ! empty( $v ) ) {
 	$image_size    = isset( $is ) && ! empty( $is ) ? $is : false;
 	$image_size_2x = isset( $is_2x ) && ! empty( $is_2x ) ? $is_2x : $image_size . '-2x';
 
-	$class = isset( $c ) && ! empty( $c ) ? 'class="' . $c . ' lazyload"' : 'class="lazyload"';
+	$class = isset( $c ) && ! empty( $c ) ? $c . ' lazyload' : 'lazyload"';
 ?>
 <?php $option = isset( $o ) && ! empty( $o ) ? $o : false; ?>
 <?php $ww = isset( $w ) && ! empty( $w ) ? $w : false; ?>
@@ -44,9 +44,9 @@ if ( 'o' == $option ) {
 			<?php $bg_url = $image['url']; ?>
 			<?php $bg_url_2x = $image['url']; ?>
 			<?php if ( false === $val2x ) : ?>
-					<img <?php echo esc_attr( $class ); ?> data-src="<?php echo esc_url( $bg_url ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+					<img class="<?php echo esc_attr( $class ); ?>" data-src="<?php echo esc_url( $bg_url ); ?>" alt="<?php echo esc_attr( $image['alt'] ); ?>">
 			<?php else : ?>	
-					<img <?php echo esc_attr( $class ); ?> data-src="<?php echo esc_url( $bg_url ); ?>" data-srcset="<?php echo esc_url( $bg_url_2x ); ?> 2x" alt="<?php echo esc_attr( $image['alt'] ); ?>">
+					<img class="<?php echo esc_attr( $class ); ?>" data-src="<?php echo esc_url( $bg_url ); ?>" data-srcset="<?php echo esc_url( $bg_url_2x ); ?> 2x" alt="<?php echo esc_attr( $image['alt'] ); ?>">
 			<?php endif ?>
 		<?php if ( $ww ) : ?>
 			</<?php echo esc_attr( $ww ); ?>>
@@ -63,7 +63,7 @@ if ( 'o' == $option ) {
 		<?php endif ?>
 			<?php $bg_url = $image['sizes'][ $image_size ]; ?>
 			<?php $bg_url_2x = $image['sizes'][ $image_size_2x ]; ?>
-				<img <?php echo esc_attr( $class ); ?> 
+				<img class="<?php echo esc_attr( $class ); ?>" 
 					data-src="<?php echo esc_url( $bg_url ); ?>" 
 					<?php
 					if ( $bg_url_2x ) :

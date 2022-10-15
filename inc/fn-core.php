@@ -28,7 +28,10 @@ function am_comments( $comment, $args, $depth ) {
 		if ( 0 != $args['avatar_size'] ) {
 			echo get_avatar( $comment, $args['avatar_size'] );}
 		?>
-		<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>', 'am' ), get_comment_author_link() ); ?>
+		<?php
+		// phpcs:disabled WordPress.Security.EscapeOutput.OutputNotEscaped
+		printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>', 'am' ), get_comment_author_link() );
+		?>
 		</div>
 	<?php if ( '0' == $comment->comment_approved ) : ?>
 		<em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'am' ); ?></em>
@@ -145,6 +148,7 @@ endif;
  * @return '...'
  */
 function am_excerpt_more( $more ) {
+	$more = '...';
 	return '...';
 }
 
@@ -207,15 +211,19 @@ function am_add_javascript() {
 	wp_enqueue_script( 'jquery' );
 	if ( ! is_admin() ) {
 		// external Javascript
-		$am_links = array();
+		$am_links = array(
+			'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js',
+		);
 		foreach ( $am_links as $am_link ) {
+			// phpcs:disabled WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion
 			wp_enqueue_script( 'am_' . sanitize_title( $am_link ), $am_link, array( 'jquery' ), '', false );
 		}
 		$am_files = array(
+			'/assets/js/libs.min.js',
 			'/assets/js/main.min.js',
 		); // example: array('script1', 'script2');
 		foreach ( $am_files as $am_file ) {
-			wp_enqueue_script( 'am_' . sanitize_title( $am_file ), get_theme_file_uri( $am_file ), array( 'jquery' ), filemtime( $am_file ), true );
+			wp_enqueue_script( 'am_' . sanitize_title( $am_file ), get_theme_file_uri( $am_file ), array( 'jquery' ), filemtime( get_theme_file_path( $am_file ) ), true );
 		}
 	}
 }
@@ -225,8 +233,9 @@ function am_add_javascript() {
  */
 function am_add_css() {
 	// Add external CSS urls here
-	$am_links = array();
+	$am_links = array( 'https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap' );
 	foreach ( $am_links as $am_link ) {
+		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_style( 'am_' . sanitize_title( $am_link ), $am_link, array() );
 	}
 
@@ -327,6 +336,7 @@ function load_template_part( $template_name, $part_name = null ) {
  * @return array updated MIMEs
  */
 function am_mime_types( $mimes ) {
+	$mimes['webp'] = 'image/webp';
 	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 	return $mimes;
