@@ -1,0 +1,20 @@
+.content-image {
+  padding: 50px 0;
+  @include mq(tablet) {
+    padding: 150px 0 30px;
+  }
+  &--top {
+    text-align: center;
+  }
+  &__content {
+
+  }
+  &__image {
+    margin-top: 20px;
+    img {
+      @include when-inside('.content-image--top') {
+        margin: 0 auto;
+      }
+    }
+  }
+}

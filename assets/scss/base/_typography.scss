@@ -1,4 +1,55 @@
 /**
  * Basic typography style for copy text
  */
-
+.h1,
+h1 {
+  font: 700 32px/1.2 $f-heading;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  @include mq(tablet) {
+    font-size: 52px;
+  }
+}
+.h2,
+h2 {
+  font: 700 24px/1.2 $f-heading;
+  letter-spacing: 0.1em;
+  text-transform: capitalize;
+  @include mq(tablet) {
+    font-size: 45px;
+  }
+}
+.h3,
+h3 {
+  font: 700 20px/1.2 $f-text;
+  letter-spacing: 0.15em;
+  @include mq(tablet) {
+    font-size: 32px;
+  }
+}
+.h6,
+h6 {
+  font: 400 16px/1.6 $f-text;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  @include mq(tablet) {
+    font-size: 20px;
+  }
+}
+.text-normal,
+p {
+  letter-spacing: 0.05em;
+  font: 400 12px/16px $f-text;
+  @include mq(tablet) {
+    font-size: 14px;
+    line-height: 19px;
+  }
+}
+.text-caption {
+  font: 400 10px/16px $f-text;
+  letter-spacing: 0.2em;
+  @include mq(tablet) {
+    font-size: 13px;
+    line-height: 24px;
+  } 
+}

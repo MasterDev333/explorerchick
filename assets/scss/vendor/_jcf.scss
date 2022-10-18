@@ -1,0 +1,68 @@
+.jcf {
+  &-list {
+    &-box {
+
+    }
+    &-wrapper {
+
+    }
+    &-content {
+      display: block;
+      padding: 10px;
+      ul {
+        list-style: none;
+        li {
+          margin: 5px 0;
+          font-size: 13px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &-select {
+    position: relative;
+    cursor: pointer;
+    &-text {
+      display: inline-block;
+      padding: 5px 20px 5px 10px;
+      font-size: 14px;
+      color: $text-color;
+      letter-spacing: 0.05em;
+      transition: color .3s ease-in-out;
+    }
+    &-opener {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      transition: all .3s ease-in-out;
+      @include triangle(bottom, $grey, 8px, 7px);
+      @include mq(tablet) {
+        @include triangle(bottom, $grey, 16px, 14px);
+      }
+    }
+    &-drop {
+      position: absolute;
+      width: 200px !important;
+      background-color: #fff;
+      border: 1px solid $pink;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      z-index: 100;
+    }
+    &.jcf-drop-active {
+      .jcf-select-text {
+        color: $pink;
+      }
+      .jcf-select-opener {
+        transform: translateY(-50%) rotate(180deg);
+        border-top-color: $pink;
+      }
+    }
+  }
+  &-disabled {
+    display: none;
+  }
+  &-option {
+    font-weight: 500;
+  }
+}

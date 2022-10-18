@@ -285,7 +285,19 @@
   }
 }
 
-@keyframes gradient {
-  0%{background-position:0% 0%}
-  100%{background-position:0% -200%}
+@keyframes pulse-border {
+  0% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.4);
+    opacity: 0
+  }
+}
+
+@keyframes orbit {
+	from { 	transform: rotate(0deg) translateX(10px) rotate(0deg); }
+	to   {  transform: rotate(360deg) translateX(10px) rotate(-360deg); }
 }

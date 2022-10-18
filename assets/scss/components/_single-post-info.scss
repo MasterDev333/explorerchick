@@ -1,0 +1,6 @@
+.single-post__info {
+  margin: 70px 0;
+  @include mq(tablet) {
+    margin: 140px 0 70px;
+  } 
+}

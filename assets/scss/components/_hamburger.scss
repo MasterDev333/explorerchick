@@ -10,7 +10,9 @@
   outline: none;
   background-color: transparent;
   cursor: pointer;
-
+  @include mq(desktop) {
+    display: none;
+  }
   span {
     position: relative;
     font-size: 0;
@@ -41,7 +43,7 @@
     }
   }
 
-  @include when-inside('.page-header.is-opened') {
+  @include when-inside('.header.is-opened') {
     span {
       background-color: transparent;
 

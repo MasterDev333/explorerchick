@@ -1,0 +1,106 @@
+.cpt-slider {
+  margin: 50px 0;
+  .container {
+    overflow: hidden;
+  }
+  .swiper {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    &-slide {
+      height: auto;
+    }
+  }
+  .section-heading {
+    margin-bottom: 10px;
+  }
+  &__cta {
+    margin-top: 30px;
+    text-align: center;
+    @include mq(tablet) {
+      margin-top: 40px;
+    }
+    .btn {
+      @include mq(tablet) {
+        width: calc((100% - 40px) / 3);
+      }
+      @include mq(desktop-small) {
+        width: calc((100% - 100px) / 3);
+      }
+    }
+  }
+}
+.cpt-slide {
+  height: 100%;
+  border: 1px solid $pink;
+  @include when-inside('.cpt-slider--post') {
+    border: none;
+  }
+  &__img {
+    position: relative;
+    height: 215px;
+    border-bottom: 1px solid $pink;
+    @include when-inside('.cpt-slider--post') {
+      border: 1px solid $pink;
+    }
+  }
+  &__cat {
+    position: absolute;
+    padding: 10px 20px;
+    top: 0;
+    left: 0;
+    background-color: $pink;
+    font: 700 14px/1 $f-text;
+    text-transform: uppercase;
+    color: #fff;
+    @include mq(tablet) {
+      padding: 20px 40px;
+    }
+  }
+  &__content {
+    padding: 20px;
+    @include mq(tablet) {
+      padding: 20px 30px;
+    }
+    @include when-inside('.cpt-slider--post') {
+      padding: 10px 0;
+    }
+  }
+  &__title {
+    margin-bottom: 15px;
+    color: $pink;
+    font-weight: 700;
+    text-transform: uppercase;
+    @include mq(tablet) {
+      margin-bottom: 25px;
+    }
+    @include when-inside('.cpt-slider--post') {
+      margin-bottom: 5px;
+    }
+  }
+  &__text {
+    margin-bottom: 1em;
+  }
+  &__date {
+    margin-bottom: 5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+    i {
+      margin-right: 5px;
+      color: $pink;
+    }
+  }
+  &__category {
+    i {
+      color: $pink;
+    }
+  }
+  .btn {
+    display: block;
+  }
+}

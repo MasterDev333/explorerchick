@@ -1,0 +1,35 @@
+.content-slider {
+  margin: 50px 0;
+  @include mq(tablet) {
+    margin: 100px 0;
+  }
+  .container {
+    overflow: hidden;
+  }
+}
+.content-slide {
+  &__img {
+    margin-bottom: 20px;
+    height: 215px;
+    border: 1px solid $pink;
+    @include mq(tablet) {
+      margin-bottom: 30px;
+    }
+  }
+  &__content {
+    margin-bottom: 20px;
+    @include mq(tablet) {
+      margin-bottom: 40px;
+    }
+    h6 {
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: $pink;
+    }
+  }
+  .btn {
+    display: block;
+  }
+}

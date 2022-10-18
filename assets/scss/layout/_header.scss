@@ -1,13 +1,125 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
-.page-header {
-  position: relative;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
-
-  &__logo {
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 2px solid $pink;
+  z-index: 100;
+  &-top {
+    padding: 10px 0;
+    background-color: $yellow;
+    &__slide {
+      text-align: center;
+      letter-spacing: 0.2em;
+      @extend .text-caption;
+      a {
+        color: $pink;
+        font-weight: 700;
+      }
+    }
+  }
+  &-main {
+    position: relative;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    transition: background .3s ease-in-out;
+    @include when-inside('.header--sticky') {
+      background-color: #fff;
+    }
+  }
+  &-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  ul {
+    list-style: none;
+  }
+  &-menu {
+    display: none;
+    list-style: none;
+    @include mq(desktop, max) {
+      position: absolute;
+      padding: 10px 20px 20px;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+    }
+    @include mq(desktop) {
+      display: flex !important;
+      margin-left: auto;
+      margin-right: -15px;
+      align-items: center;
+    }
+    .menu-item {
+      position: relative;
+      @include mq(tablet) {
+        margin: 0 10px;
+        .scroll-up,
+        .scroll-down {
+          display: none !important;
+        }
+      }
+      @include mq(desktop-wide) {
+        margin: 0 15px;
+      }
+    }
+    a {
+      text-transform: uppercase;
+      @extend .text-caption;
+      color: $text-color;
+    }
+    .dropdown {
+      @include mq(tablet) {
+        position: absolute;
+        padding: 35px;
+        background: #fff;
+        border: 1px solid $pink;
+        max-width: none !important;
+        width: auto !important;
+        transform: translateY(26px);
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        top: -10px;
+        left: 20px;
+        @include triangle(top, $pink, 20px, 10px);
+      }
+      h6 {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: uppercase;
+      }
+      .submenu {
+        @include mq(tablet) {
+          display: flex;
+          margin: 0 -20px;
+        }
+        &-links {
+          &.col-2 {
+            @include mq(tablet) {
+              column-count: 2;
+              column-gap: 20px;
+            }
+          }
+        }
+      }
+      .column {
+        @include mq(tablet) {
+          margin: 0 20px;
+          min-width: 140px;
+        }
+        a {
+          text-transform: capitalize;
+          @extend .link;
+        }
+      }
+    }
   }
 }

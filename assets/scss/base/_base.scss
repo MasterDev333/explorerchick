@@ -8,11 +8,15 @@
 html {
   box-sizing: border-box;
    -webkit-overflow-scrolling: touch;
+   background-color: #fff;
 }
 
 body {
-  max-width: 100%;
+  max-width: 1920px;
+  margin: auto;
   overflow-x: hidden;
+  @extend .text-normal;
+  @include custom-scrollbar(5px, $pink);
 }
 
 /**
@@ -44,6 +48,10 @@ img {
 a {
   text-decoration: none;
   transition: all .3s ease-in-out;
+  color: inherit;
+  &:hover {
+    color: $pink;
+  }
 }
 
 h1,
@@ -53,4 +61,64 @@ h4,
 h5 {
   margin: 0;
   padding: 0;
+}
+
+.section {
+  &-top {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    .section-heading {
+      margin-right: 20px;
+      @include mq(tablet) {
+        white-space: nowrap;
+      }
+    }
+  }
+  &-decor {
+    display: none;
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: auto 100%;
+    flex-grow: 1;
+    @include mq(tablet) {
+      display: block;
+      height: 50px;
+    }
+  }
+  &-subheading {
+    margin-bottom: 10px;
+  }
+  &-heading {
+    margin-bottom: 10px;
+    color: $pink;
+    text-transform: capitalize;
+  }
+}
+.tooltip {
+  position: relative;
+  margin-top: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  i {
+    font-size: 14px !important;
+    color: $grey !important;
+  }
+  &-content {
+    position: absolute;
+    margin-top: 10px;
+    padding: 10px;
+    width: 200px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    @include element-hidden;
+  }
+  &:hover {
+    i {
+      color: $pink !important;
+    }
+    .tooltip-content {
+      @include element-show;
+    }
+  }
 }

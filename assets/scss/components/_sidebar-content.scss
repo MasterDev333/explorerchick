@@ -1,0 +1,330 @@
+.sidebar-content {
+  @include when-inside('.single-trip') {
+    margin-top: 30px;
+
+    @include mq(tablet) {
+      margin-top: 50px;
+    }
+  }
+
+  &__inner {
+    @include mq(tablet) {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  .sidebar {
+    @include mq(tablet) {
+      position: sticky;
+      top: 150px;
+      left: 0;
+      padding-right: 20px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    @include mq(desktop-wide) {
+      padding-right: 40px;
+    }
+
+    h6 {
+      margin-bottom: 1em;
+      font-weight: 700;
+    }
+
+    &-menu {
+      list-style: none;
+
+      li {
+        margin-bottom: 1em;
+      }
+
+      a {
+        font: 400 12px/16px $f-text;
+        color: $pink;
+        @extend .link;
+
+        @include mq(tablet) {
+          font-size: 16px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .content {
+    padding-bottom: 50px;
+    @include mq(tablet) {
+      padding-bottom: 100px;
+      padding-left: 20px;
+      flex-grow: 1;
+      border-left: 1px solid $pink;
+    }
+
+    @include mq(desktop-wide) {
+      padding-bottom: 150px;
+      padding-left: 40px;
+    }
+  }
+
+  .post-author {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    color: $pink;
+
+    @include mq(tablet) {
+      margin-bottom: 25px;
+      font: 700 14px/24px $f-text;
+      letter-spacing: 0.05em;
+    }
+
+    &__icon {
+      margin-right: 10px;
+
+      i {
+        font-size: 40px;
+      }
+    }
+
+    &__name {
+      font-weight: 700;
+    }
+
+    &__date {
+      color: $text-color;
+    }
+  }
+
+  .content-block {
+    position: relative;
+    margin-bottom: 40px;
+    padding-top: 40px;
+
+
+    &::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: url('../img/zigzaw.png') repeat-x center;
+      background-size: auto 100%;
+    }
+
+    &--no-decor {
+      padding-top: 0;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .general-content {
+    margin-bottom: 20px;
+
+    img {
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin-bottom: 16px;
+      color: $pink;
+
+      @include mq(tablet) {
+        margin-bottom: 24px;
+      }
+    }
+    h3 {
+      letter-spacing: 0.1em;
+    }
+
+    p {
+      margin-bottom: 1em;
+      a {
+        color: $pink;
+        @extend .link;
+      }
+    }
+  }
+
+  .social-share {
+    display: flex;
+    align-items: center;
+    margin: 25px -10px;
+    @extend .text-caption;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    * {
+      margin: 0 10px;
+    }
+
+    p {
+      font-weight: 700;
+    }
+
+    a {
+      color: $pink;
+      font-size: 20px;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+
+  .author-box {
+    background-color: $pink;
+    color: #fff;
+
+    @include mq(desktop-small) {
+      display: flex;
+      align-items: center;
+    }
+
+    &__image {
+      @include mq(tablet) {
+        padding: 20px 20px 0;
+        flex: 0 0 200px;
+        height: 200px;
+        max-width: 200px;
+      }
+
+      @include mq(desktop-small) {
+        padding: 0;
+        flex: 0 0 300px;
+        height: 300px;
+        max-width: 300px;
+      }
+    }
+
+    &__content {
+      padding: 20px;
+
+      @include mq(desktop-small) {
+        padding: 20px 40px;
+      }
+    }
+
+    &__name {
+      margin-bottom: 15px;
+    }
+
+    &__bio {
+      margin-bottom: 15px;
+
+      @include mq(tablet) {
+        margin-bottom: 35px;
+      }
+    }
+
+    .btn:hover {
+      border-color: #fff;
+    }
+  }
+
+  @include when-inside('.single-trip') {
+    .sidebar {
+      .btn {
+        display: block;
+        padding: 15px;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+
+      &-menu {
+        a {
+          font: 400 16px/1.2 $f-text;
+          color: $text-color;
+          text-transform: uppercase;
+
+          @include mq(tablet) {
+            font-size: 20px;
+          }
+
+          &.active {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .itinerary {
+    &-header {
+      display: flex;
+      margin-bottom: 15px;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      @include mq(tablet) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &-accordion {
+      background-color: $yellow;
+      padding: 20px;
+
+      @include mq(tablet) {
+        display: flex;
+      }
+
+      @include mq(desktop-small) {
+        padding: 30px 25px;
+      }
+
+      &__content {
+        h3 {
+          margin-bottom: 20px;
+          color: $pink;
+          letter-spacing: 0.1em;
+        }
+
+        p {
+          margin-bottom: 20px;
+
+          a {
+            color: $pink;
+            @extend .link;
+          }
+        }
+      }
+
+      &__img {
+        width: 200px;
+        height: 200px;
+
+        @include mq(tablet) {
+          margin-left: 30px;
+          flex: 0 0 200px;
+        }
+
+        @include mq(desktop-small) {
+          margin-left: 50px;
+          width: 300px;
+          height: 300px;
+          flex: 0 0 300px;
+        }
+      }
+    }
+    &-map {
+      margin: 30px 0;
+      @include mq(tablet) {
+        margin: 50px 0;
+      }
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}

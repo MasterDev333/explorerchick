@@ -1,0 +1,12 @@
+.partners {
+  margin: 40px 0;
+  @include mq(tablet) {
+    margin: 60px 0;
+  }
+  &-logos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+  }
+}

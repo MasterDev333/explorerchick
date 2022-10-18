@@ -1,0 +1,61 @@
+.subscribe {
+  background: $pink;
+  @include mq(tablet, max) {
+    padding-top: 30px;
+  }
+  &-inner {
+    @include mq(tablet) {
+      display: flex;
+    }
+  }
+  &-image {
+    @include mq(tablet) {
+      flex: 0 0 calc((100% - 40px) / 3);
+    }
+    @include mq(desktop-small) {
+      flex: 0 0 calc((100% - 100px) / 3);
+    }
+  }
+  &-content {
+    padding: 30px;
+    color: #fff;
+    @include mq(tablet) {
+      padding: 50px 30px;
+    }
+  }
+  &-heading {
+    margin-bottom: 20px;
+    @include mq(tablet) {
+      margin-bottom: 30px;
+    }
+  }
+  &-form {
+    margin-top: 20px;
+    max-width: 530px;
+  }
+  .btn {
+    &:hover {
+      border-color: #fff;
+    }
+  }
+  &#trip-packet {
+    @include mq(tablet, max) {
+      padding-top: 0;
+    }
+    .subscribe-image {
+      @include mq(tablet) {
+        flex: 0 0 300px;
+      }
+      @include mq(tablet) {
+        flex: 0 0 400px;
+      }
+    }
+    .form-control,
+    .btn {
+      padding: 15px 10px;
+    }
+    .btn {
+      width: 100%;
+    }
+  }
+}

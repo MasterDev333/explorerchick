@@ -4,13 +4,39 @@
 @import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
 
 // 2. Vendors
-@import 'vendor/normalize', 'vendor/wp-core';
+@import 'vendor/normalize', 'vendor/wp-core', 'vendor/swiper', 'vendor/jcf', 'vendor/fancybox';
 
 // 3. Base stuff
-@import 'base/base', 'base/fonts', 'base/typography', 'base/helpers', 'base/animation';
+@import 'base/animation', 'base/base', 'base/fonts', 'base/typography', 'base/helpers';
 
 // 4. Layout-related sections
-@import 'layout/header', 'layout/footer';
+@import 'layout/header', 'layout/footer', 'layout/breadcrumbs', 'layout/form', 'layout/search-form';
 
 // 5. Components
-@import 'components/button', 'components/hamburger';
+@import 'components/button', 
+        'components/hamburger',
+        'components/accordion',
+        'components/banner',
+        'components/book-confidence',
+        'components/blog-search',
+        'components/card-box',
+        'components/content-image',
+        'components/content-slider',
+        'components/cpt-slider',
+        'components/featured-blog',
+        'components/featured-video',
+        'components/gallery',
+        'components/partners-logos',
+        'components/reason',
+        'components/reserve-cta',
+        'components/reviews',
+        'components/sidebar-content',
+        'components/single-post-info',
+        'components/social-feed',
+        'components/subscribe',
+        'components/trip-info',
+        'components/trip-grid',
+        'components/why-choose';
+
+// 6. Pages
+@import 'pages/blog';

@@ -1,0 +1,31 @@
+.book-confidence {
+  margin: 30px 0;
+  @include mq(tablet) {
+    margin: 50px 0;
+  }
+  .row {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-gap: 20px;
+    }
+    @include mq(desktop-small) {
+      grid-gap: 50px;
+    }
+  }
+  .col {
+    @include mq(tablet, max) {
+      margin-bottom: 30px;
+    }
+    &-content {
+      margin-bottom: 10px;
+      @include mq(tablet) {
+        margin-bottom: 30px;
+      }
+    }
+    .btn {
+      display: block;
+      width: 100%;
+    }
+  }
+}

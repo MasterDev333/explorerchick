@@ -1,0 +1,73 @@
+.search {
+  @include mq(tablet) {
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 10;
+  }
+  .container-sm {
+    @include mq(tablet, max) {
+      padding: 0;
+    }
+  }
+  &-form {
+    padding: 20px;
+    background-color: $pink;
+    @include mq(tablet) {
+      padding: 20px 40px;
+    }
+    &__title {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+    }
+    &__form {
+      @include mq(tablet) {
+        display: flex;
+      }
+      .form-fields {
+        @include mq(tablet) {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-gap: 10px;
+          flex-grow: 1;
+        }
+        @include mq(desktop) {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+      .form-field {
+        padding: 10px;
+        background-color: #fff;
+        color: $text-color;
+        text-align: left;
+        label {
+          display: block;
+          font: 400 11px/18px $f-text;
+          letter-spacing: 0.15em;
+        }
+      }
+      .form-control {
+        padding: 0;
+        border: none;
+        font: 400 14px/20px $f-text;
+        letter-spacing: 0.1em;
+        outline: none !important;
+        width: auto;
+        cursor: pointer;
+      }
+    }
+    &__submit {
+      @include mq(tablet, max) {
+        flex-shrink: 0;
+        width: 100%;
+      }
+      @include mq(tablet) {
+        margin-left: 30px;
+      }
+    }
+  }
+}

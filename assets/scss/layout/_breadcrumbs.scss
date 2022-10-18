@@ -1,0 +1,10 @@
+.breadcrumbs {
+  font-weight: 700;
+  text-transform: uppercase;
+  a {
+    &:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.why-choose {
+  padding-bottom: 40px;
+  @include mq(tablet) {
+    padding-bottom: 60px;
+  }
+  .steps {
+    @include mq(tablet) {
+      display: flex;
+      align-items: center;
+    }
+    label {
+      font: 700 14px/20px $f-text;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      @include mq(tablet, max) {
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-gap: 10px;
+      text-align: center;
+      @include mq(tablet) {
+        display: flex;
+        align-items: center;
+        grid-gap: 0;
+      }
+      li {
+        @include mq(tablet) {
+          margin: 0 10px;
+        }
+        @include mq(desktop-small) {
+          margin: 0 25px;
+        }
+        a {
+          display: inline-flex;
+          width: 30px;
+          height: 30px;
+          align-items: center;
+          border-radius: 50%;
+          border: 1px solid $grey;
+          justify-content: center;
+          @include mq(tablet) {
+            width: 40px;
+            height: 40px;
+          }
+          &.active {
+            border-color: $pink;
+            color: $pink;
+          }
+        }
+      }
+    }
+  }
+  .card-box {
+    margin-bottom: 30px;
+    @include mq(tablet) {
+      margin-bottom: 60px;
+    }
+    &__heading {
+      margin: 0;
+    }
+  }
+  .section-heading {
+    text-align: center;
+  }
+  .section-content {
+    p {
+      margin-bottom: 1em;
+    }
+  }
+}

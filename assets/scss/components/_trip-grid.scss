@@ -1,0 +1,112 @@
+.trip-grid {
+  position: relative;
+  margin-bottom: 40px;
+  z-index: 2;
+  @include mq(tablet) {
+    margin-bottom: 70px;
+  }
+  &__info {
+    margin-top: 30px;
+    @include mq(tablet) {
+      margin-top: 50px;
+    }
+  }
+  &__heading {
+    margin-bottom: 20px;
+    color: $pink;
+    text-align: center;
+    @include mq(tablet) {
+      margin-bottom: 30px;
+    }
+  }
+  &__content {
+    p {
+      margin-bottom: 1em;
+    }
+  }
+  .cpt-slides {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    @include mq(tablet) {
+      margin-top: 80px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 30px;
+    }
+    @include mq(desktop-wide) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-gap: 50px;
+    }
+  }
+}
+.trip-categories {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  label {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    @include mq(tablet, max) {
+      flex: 0 0 50%;
+    }
+  }
+  .btn-clear-filters {
+    padding: 5px 15px;
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid $grey;
+    color: $text-color;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background-color: $pink;
+      border-color: $pink;
+      color: white;
+    }
+  }
+  .clear-wrapper {
+    @include mq(tablet, max) {
+      flex: 0 0 50%;
+      text-align: right;
+    }
+  }
+}
+.trip-category {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    color: $text-color;
+    margin: 10px;
+    transition: color .3s ease-in-out;
+    @include mq(tablet, max) {
+      margin: 10px 0;
+      flex: 0 0 calc(100% / 3);
+      order: 1;
+    }
+    @include mq(phablet, max) {
+      flex: 0 0 50%;
+    }
+    &:hover {
+      i {
+        color: $pink;
+      }
+      .jcf-select-text {
+        color: $pink;
+      }
+    }
+    i {
+      color: $grey;
+      transition: color .3s ease-in-out;
+      @include mq(tablet) {
+        font-size: 20px;
+      }
+    }
+  }
+}

@@ -1,3 +1,101 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the footer of the site/application.
 // -----------------------------------------------------------------------------
+.footer {
+  &-main {
+    padding: 30px 0;
+    background-color: $yellow;
+    @include mq(tablet) {
+      padding: 60px 0;
+    }
+  }
+  &-bottom {
+    padding: 20px 0;
+    @include mq(tablet) {
+      padding: 30px 0;
+    }
+    &__inner {
+      @include mq(tablet) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+  &-copy {
+    @include mq(tablet, max) {
+      margin-bottom: 10px;
+    }
+  }
+  &-right {
+    > a:not([class]) {
+      font-weight: bold;
+    }
+    .btn {
+      margin-left: 20px;
+    }
+  }
+  &-row {
+    @include mq(tablet) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+  }
+  &-col {
+    h6 {
+      margin-top: 45px;
+      margin-bottom: 10px;
+      color: $pink;
+      font-weight: 700;
+    }
+  }
+  &-logo {
+    display: block;
+    margin-bottom: 10px;
+  }
+  &-menu {
+    list-style: none;
+    li {
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+    a {
+      letter-spacing: 0.2em;
+      @extend .link;
+      i {
+        color: $pink;
+      }
+    }
+  }
+  &-subscribe {
+    @include mq(tablet) {
+      width: 400px;
+    }
+    h6 {
+      margin-top: 45px;
+      margin-bottom: 10px;
+      color: $pink;
+      font-weight: 700;
+      text-transform: initial;
+    }
+    p {
+      margin-bottom: 20px;
+      letter-spacing: 0.2em;
+    }
+    .btn {
+      padding: 10px;
+      width: 100%;
+    }
+    .form-col {
+      @include mq(tablet) {
+        margin-bottom: 10px;
+        padding: 0 5px;
+      }
+    }
+    .form-control {
+      padding: 10px;
+      border: 1px solid $pink;
+    }
+  }
+}

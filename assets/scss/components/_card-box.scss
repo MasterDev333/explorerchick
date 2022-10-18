@@ -1,0 +1,25 @@
+.card-box {
+  position: relative;
+  border: 1px solid $pink;
+  z-index: 2;
+  &__header {
+    padding: 10px;
+    background: $pink;
+    color: #fff;
+    @include mq(tablet) {
+      padding: 20px;
+    }
+  }
+  &__heading {
+    margin: 10px 0;
+    text-align: center;
+    letter-spacing: 0.135em;
+    @include mq(tablet) {
+      margin-bottom: 20px;
+    }
+  }
+  &__content {
+    padding: 25px 30px;
+    background-color: #fff;
+  }
+}

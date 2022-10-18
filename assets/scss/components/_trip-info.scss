@@ -1,0 +1,59 @@
+.trip-info {
+  .btn-book-now {
+    position: absolute;
+    padding: 2px 5px;
+    top: 10px;
+    right: 10px;
+    border: 1px solid #fff;
+    font-weight: 700;
+    @include mq(tablet) {
+      top: 20px;
+      right: 20px;
+    }
+    &:hover {
+      background-color: $yellow;
+      color: $text-color;
+    }
+  }
+  .card-box {
+    &__content {
+      h6 {
+        margin-bottom: 15px;  
+        text-align: center;
+        font-weight: 700;
+      }
+    }
+  }
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 10px;
+    @include mq(tablet) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 24px;
+      color: $pink;
+    }
+    &--full {
+      @include mq(tablet, max) {
+        grid-column-end: span 2;
+        order: 1;
+      }
+      @include mq(tablet) {
+        grid-row-end: span 2;
+      }
+    }
+  }
+  .tooltip {
+    &-content {
+      @include mq(tablet, max) {
+        right: 0;
+      }
+    }
+  }
+}

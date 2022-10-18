@@ -1,0 +1,54 @@
+.blog-search {
+  margin: 30px 0;
+  @include mq(tablet) {
+    margin: 45px 0;
+  }
+  &__title {
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-align: center;
+  }
+  &__inner {
+    padding: 20px;
+    background: $pink;
+    color: #fff;
+    @include mq(tablet) {
+      padding: 25px 30px;
+    }
+  }
+  .form-col {
+    @include mq(tablet) {
+      margin-bottom: 0;
+    }
+  }
+  .form-group {
+    display: flex;
+    align-items: center;
+    .btn {
+      margin-left: 10px;
+      flex: 0 0 130px; 
+      font-size: 12px;
+      line-height: 16px;
+      @include mq(tablet) {
+        margin-left: 20px;
+        padding: 20px;
+        font-size: 14px;
+        line-height: 19px;
+      }
+      &:hover {
+        border-color: #fff;
+      }
+    }
+    .jcf-select {
+      flex-grow: 1;
+      color: $text-color;
+      &-text {
+        @extend .form-control;
+        background-color: #fff;
+      }
+      &-opener {
+        right: 20px;
+      }
+    }
+  }
+}

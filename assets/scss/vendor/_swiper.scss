@@ -1,0 +1,38 @@
+.swiper {
+  .cpt-slider &,
+  .content-slider & {
+    @include mq(tablet) {
+      overflow: visible;
+    }
+  }
+  &-button {
+    &-prev {
+      margin-top: 0;
+      transform: translateY(-50%);
+      @include triangle(left, $pink, 14px, 24px);
+      @include when-inside('.swiper-button--outside') {
+        left: 20px;
+        @include mq(tablet) {
+          left: -20px;
+        }
+      }
+      &::after {
+        content: none;
+      }
+    }
+    &-next {
+      margin-top: 0;
+      transform: translateY(-50%);
+      @include triangle(right, $pink, 14px, 24px);
+      @include when-inside('.swiper-button--outside') {
+        right: 20px;
+        @include mq(tablet) {
+          right: -20px;
+        }
+      }
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

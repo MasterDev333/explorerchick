@@ -1,0 +1,33 @@
+.accordion {
+  &-header {
+    position: relative;
+    padding: 15px 0;
+    border-bottom: 1px solid $pink;
+    cursor: pointer;
+
+    b {
+      text-transform: uppercase;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      right: 15px;
+      @include triangle(bottom, $pink, 25px, 15px);
+      transform: translateY(-50%);
+      transition: transform .3s ease-in-out;
+      will-change: transform;
+    }
+
+    &.active {
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+
+  &-content {
+    display: none;
+  }
+}
