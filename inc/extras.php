@@ -60,6 +60,7 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 			add_action( 'wp_head', array( $this, 'add_ajax_url' ) );
 			add_action( 'init', array( $this, 'add_categories_to_pages' ) );
 			add_action( 'login_enqueue_scripts', array( $this, 'login_enqueue_scripts' ) );
+			add_action( 'widgets_init', array( $this, 'register_footer_widgets' ) );
 			// If ACF is installed load acf fields from local json
 			if ( class_exists( 'ACF' ) ) {
 				add_action( 'acf/init', array( $this, 'acf_init' ) );
@@ -172,7 +173,33 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 			<?php
 			return ob_get_clean();
 		}
+		/**
+		 * Register Footer Widgets
+		 */
+		public function register_footer_widgets() {
 
+			register_sidebar( array(
+			  'name'          => 'Footer area one',
+			  'id'            => 'footer_area_one',
+			  'description'   => 'This widget area discription',
+			  'before_widget' => '<div class="footer-col a-up a-delay-1">',
+			  'after_widget'  => '</div>',
+			  'before_title'  => '<h6>',
+			  'after_title'   => '</h6>',
+			));
+		  
+			register_sidebar( array(
+			  'name'          => 'Footer area two',
+			  'id'            => 'footer_area_two',
+			  'description'   => 'This widget area discription',
+			  'before_widget' => '<div class="footer-col a-up a-delay-2">',
+			  'after_widget'  => '</div>',
+			  'before_title'  => '<h6>',
+			  'after_title'   => '</h6>',
+			));
+		  
+		}
+		  
 	}
 
 	$extra = new Theme_Extra();

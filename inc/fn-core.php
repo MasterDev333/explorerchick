@@ -213,6 +213,10 @@ function am_add_javascript() {
 		// external Javascript
 		$am_links = array(
 			'https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js',
+			'https://cdnjs.cloudflare.com/ajax/libs/jQuery-viewport-checker/1.8.8/jquery.viewportchecker.min.js',
+			'https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.min.js',
+			'https://cdnjs.cloudflare.com/ajax/libs/jquery.smartmenus/1.0.2/jquery.smartmenus.min.js',
+			'https://kit.fontawesome.com/49214c73bc.js',
 		);
 		foreach ( $am_links as $am_link ) {
 			// phpcs:disabled WordPress.WP.EnqueuedResourceParameters.NoExplicitVersion
@@ -233,7 +237,11 @@ function am_add_javascript() {
  */
 function am_add_css() {
 	// Add external CSS urls here
-	$am_links = array( 'https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap' );
+	$am_links = array(
+		'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Raleway:wght@700&display=swap',
+		'https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.2/swiper-bundle.min.css',
+		'https://cdnjs.cloudflare.com/ajax/libs/jquery.smartmenus/1.0.2/css/sm-core-css.min.css',
+	);
 	foreach ( $am_links as $am_link ) {
 		// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 		wp_enqueue_style( 'am_' . sanitize_title( $am_link ), $am_link, array() );
