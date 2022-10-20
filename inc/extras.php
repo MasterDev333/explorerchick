@@ -33,7 +33,6 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 				);
 			}
 
-
 			// Disable WordPress Admin Bar for all users
 			// add_filter( 'show_admin_bar', '__return_false' );
 
@@ -45,7 +44,7 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 		 */
 		public function add_filters() {
 			add_filter( 'body_class', array( $this, 'body_class' ) );
-			add_filter('use_block_editor_for_post_type', '__return_false', 10);
+			add_filter( 'use_block_editor_for_post_type', '__return_false', 10 );
 		}
 
 		/**
@@ -174,28 +173,32 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 		 */
 		public function register_footer_widgets() {
 
-			register_sidebar( array(
-			  'name'          => 'Footer area one',
-			  'id'            => 'footer_area_one',
-			  'description'   => 'This widget area discription',
-			  'before_widget' => '<div class="footer-col a-up a-delay-1">',
-			  'after_widget'  => '</div>',
-			  'before_title'  => '<h6>',
-			  'after_title'   => '</h6>',
-			));
-		  
-			register_sidebar( array(
-			  'name'          => 'Footer area two',
-			  'id'            => 'footer_area_two',
-			  'description'   => 'This widget area discription',
-			  'before_widget' => '<div class="footer-col a-up a-delay-2">',
-			  'after_widget'  => '</div>',
-			  'before_title'  => '<h6>',
-			  'after_title'   => '</h6>',
-			));
-		  
+			register_sidebar(
+				array(
+					'name'          => 'Footer area one',
+					'id'            => 'footer_area_one',
+					'description'   => 'This widget area discription',
+					'before_widget' => '<div class="footer-col a-up a-delay-1">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<h6>',
+					'after_title'   => '</h6>',
+				)
+			);
+
+			register_sidebar(
+				array(
+					'name'          => 'Footer area two',
+					'id'            => 'footer_area_two',
+					'description'   => 'This widget area discription',
+					'before_widget' => '<div class="footer-col a-up a-delay-2">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<h6>',
+					'after_title'   => '</h6>',
+				)
+			);
+
 		}
-		  
+
 		// Disable for post types
 		public function my_remove_editor_from_post_type() {
 			remove_post_type_support( 'post', 'editor' );
@@ -260,4 +263,140 @@ function get_template_part_args( $file, $template_args = array(), $cache_args = 
 		}
 	}
 	echo $data;
+}
+
+
+
+/**
+ * Returns all child nav_menu_items under a specific parent
+ *
+ * @param int the parent nav_menu_item ID
+ * @param array nav_menu_items
+ * @param bool gives all children or direct children only
+ * @return array returns filtered array of nav_menu_items
+ */
+function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
+	$nav_menu_item_list = array();
+	foreach ( (array) $nav_menu_items as $nav_menu_item ) {
+		if ( $nav_menu_item->menu_item_parent == $parent_id ) {
+			$nav_menu_item_list[] = $nav_menu_item;
+			if ( $depth ) {
+				$children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items );
+				if ( $children ) {
+					$nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
+				}
+			}
+		}
+	}
+	return $nav_menu_item_list;
+}
+
+
+// Header Menu
+if ( ! function_exists( 'header_mega_menu' ) ) {
+	/**
+	 * Create custom mega menu for header
+	 *
+	 * @param string theme_location
+	 * @return string returns menu html
+	 */
+	function header_mega_menu( $theme_location ) {
+		$locations = get_nav_menu_locations();
+		if ( ( $theme_location ) && ( $locations ) && isset( $locations[ $theme_location ] ) ) {
+			$menu       = get_term( $locations[ $theme_location ], 'nav_menu' );
+			$menu_items = wp_get_nav_menu_items( $menu->term_id );
+
+			$menu_list = '';
+
+			$count   = 0;
+			$submenu = false;
+			$post_id = get_the_ID();
+
+			$last_menu_item = end( $menu_items );
+
+			foreach ( $menu_items as $menu_item ) {
+				$link  = $menu_item->url;
+				$title = $menu_item->title;
+				$id    = get_post_meta( $menu_item->ID, '_menu_item_object_id', true );
+
+				$class_names = '';
+
+				$is_mega_menu = get_field( 'is_mega_menu', $id );
+				$is_sub_menu  = get_field( 'is_sub_menu', $id );
+
+				$classes = empty( $menu_item->classes ) ? array() : (array) $menu_item->classes;
+
+				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $menu_item ) );
+				// If parent menu
+				if ( ! $menu_item->menu_item_parent ) {
+					$parent_id = $menu_item->ID;
+					if ( get_nav_menu_item_children( $parent_id, $menu_items ) ) {
+						$menu_list .= '<li class="menu-item">' . "\n";
+					} else {
+						$menu_list .= '<li class="menu-item' . ( ( $id == $post_id ) ? 'current-menu-item' : '' ) . '">' . "\n";
+					}
+					$menu_list .= '<a href="' . $link . '">' . $title . '</a>' . "\n";
+
+					if ( get_nav_menu_item_children( $parent_id, $menu_items ) ) {
+						$menu_list .= '<ul class="dropdown"><li>' . "\n";
+						if ( $is_mega_menu ) {
+							$menu_list .= '<div class="submenu">';
+						}
+						$submenu = true;
+					}
+				}
+				// is child menu
+				if ( $parent_id == $menu_item->menu_item_parent ) {
+					$level_2_menu_id = $menu_item->ID;
+					if ( $is_sub_menu ) {
+						$menu_list        .= '<div class="column">';
+						$heading           = get_field( 'title', $id );
+						$columns           = get_field( 'columns', $id );
+						$level_2_childrens = get_nav_menu_item_children( $level_2_menu_id, $menu_items );
+						$level_3_submenu   = false;
+						$menu_list        .= '<h6>' . esc_html( $heading ) . '</h6>';
+						if ( $level_2_childrens ) {
+							$menu_list .= '<div class="submenu-links col-' . $columns . '">';
+							foreach ( $level_2_childrens as $level_3_single_menu ) {
+								if ( $level_2_menu_id == $level_3_single_menu->menu_item_parent ) {
+									$menu_list .= '<div><a href="' . $level_3_single_menu->url . '" class="' . join( ' ', $level_3_single_menu->classes ) . '">';
+									$menu_list .= $level_3_single_menu->title . '</a>';
+									$menu_list .= '</div>';
+								}
+							}
+							$menu_list .= '</div>';
+						}
+						$menu_list .= '</div>';
+					} else {
+						$menu_list .= '<li><a href="' . $link . '">' . $title . '</a></li>';
+					}
+				}
+
+				if ( $last_menu_item->ID == $menu_items[ $count ]->ID ) {
+					if ( $submenu ) {
+						$menu_list .= '</ul>' . "\n";
+					}
+				}
+
+				if ( isset( $menu_items[ $count + 1 ] ) && ( 0 == $menu_items[ $count + 1 ]->menu_item_parent ) ) {
+
+					if ( $submenu ) {
+						if ( $is_mega_menu ) {
+							$menu_list .= '</div>';
+						}
+						$menu_list .= '</li></ul>' . "\n";
+					}
+
+					$menu_list .= '</li>' . "\n";
+
+					$submenu = false;
+				}
+
+				$count++;
+			}
+		} else {
+			$menu_list = '<!-- no menu defined in location "' . $theme_location . '" -->';
+		}
+		echo $menu_list;
+	}
 }

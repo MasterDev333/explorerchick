@@ -5,12 +5,12 @@ $tags = get_the_terms( $post, 'trip_tag' );
 <div class="swiper-slide">
 	<div class="cpt-slide">
 		<?php if ( has_post_thumbnail() ) : ?>
-		<div class="cpt-slide__img">
+		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="cpt-slide__img">
 			<img class="img-cover" src="<?php echo esc_url( get_the_post_thumbnail_url( $post, 'loop-trip-img' ) ); ?>" alt="">
 			<?php if ( $tags ) : ?>
 			<span class="cpt-slide__cat"><?php echo esc_html( $tags[0]->name ); ?></span>
 			<?php endif; ?>
-		</div>
+		</a>
 		<?php endif; ?>
 		<div class="cpt-slide__content">
 			<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="cpt-slide__title">

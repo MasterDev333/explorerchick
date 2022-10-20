@@ -15,10 +15,10 @@ function custom_taxonomies() {
 		'trip',             // post type name
 		array(
 			'hierarchical' => true,
-			'label'        => 'Categories', // display name
+			'label'        => 'Trip Categories', // display name
 			'query_var'    => true,
 			'rewrite'      => array(
-				'slug'       => 'trips',    // This controls the base slug that will display before each term
+				'slug'       => 'trip-categories',    // This controls the base slug that will display before each term
 				'with_front' => false,  // Don't display the category base before
 			),
 			'show_in_rest' => true,
@@ -30,10 +30,10 @@ function custom_taxonomies() {
 		'trip',             // post type name
 		array(
 			'hierarchical' => true,
-			'label'        => 'Tags', // display name
+			'label'        => 'Trip Tags', // display name
 			'query_var'    => true,
 			'rewrite'      => array(
-				'slug'       => 'trips',    // This controls the base slug that will display before each term
+				'slug'       => 'trip-tags',    // This controls the base slug that will display before each term
 				'with_front' => false,  // Don't display the category base before
 			),
 			'show_in_rest' => true,

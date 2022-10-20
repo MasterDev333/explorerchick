@@ -13,8 +13,19 @@
     margin-bottom: 20px;
     height: 215px;
     border: 1px solid $pink;
+    overflow: hidden;
     @include mq(tablet) {
       margin-bottom: 30px;
+    }
+    img {
+      transition: all .5s ease-in-out;
+    }
+  }
+  a.content-slide__img:hover {
+    @include mq(tablet) {
+      img {
+        transform: scale(1.05);
+      }
     }
   }
   &__content {
@@ -29,6 +40,15 @@
       text-transform: uppercase;
       color: $pink;
     }
+  }
+  &__heading {
+    display: inline-block;
+    margin-bottom: 5px;
+    @extend .link;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: $pink;
   }
   .btn {
     display: block;
