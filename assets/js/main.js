@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable func-names */
 // eslint-disable-next-line func-names
-(function ($) {
+(function($) {
   const helper = {
     // custom helper function for debounce - how to work see https://codepen.io/Hyubert/pen/abZmXjm
     /**
@@ -16,12 +16,12 @@
       let timeoutID;
       // eslint-disable-next-line no-param-reassign
       timeout = timeout || 200;
-      return function () {
+      return function() {
         const scope = this;
         // eslint-disable-next-line prefer-rest-params
         const args = arguments;
         clearTimeout(timeoutID);
-        timeoutID = setTimeout(function () {
+        timeoutID = setTimeout(function() {
           func.apply(scope, Array.prototype.slice.call(args));
         }, timeout);
       };
@@ -106,7 +106,7 @@
     bindEvents() {
       const self = this;
       /** * Run on Document Ready ** */
-      $(document).ready(function () {
+      $(document).ready(function() {
         self.smoothScrollLinks();
         self.initHeader();
         helper.isElementExist(".header-top__slider", self.initHeaderTop);
@@ -117,12 +117,21 @@
         helper.isElementExist(".cpt-slider .swiper", self.initCPTSlider);
         helper.isElementExist(".featured-blog__slider", self.initFeaturedBlog);
         helper.isElementExist(".banner--slider", self.initBannerSlider);
-        helper.isElementExist(".card-box:not(.card-box--static)", self.initCardbox);
+        helper.isElementExist(
+          ".card-box:not(.card-box--static)",
+          self.initCardbox
+        );
         helper.isElementExist(".accordion", self.initAccordion);
         helper.isElementExist(".sidebar", self.initSidebar);
+        // Copy url to clipboard when click link on social share
+        $(".social-share__copy").on("click", function() {
+          const href = $(this).attr("data-url");
+          navigator.clipboard.writeText(href);
+          return false;
+        });
       });
       /** * Run on Window Load ** */
-      $(window).on("scroll", function () {
+      $(window).on("scroll", function() {
         if ($(window).scrollTop() >= 50)
           $(".header").addClass("header--sticky");
         else $(".header").removeClass("header--sticky");
@@ -144,7 +153,7 @@
      * Smooth Scroll link
      */
     smoothScrollLinks() {
-      $('a[href^="#"').on("click touchstart", function () {
+      $('a[href^="#"').on("click touchstart", function() {
         const target = $(this).attr("href");
         if (target !== "#" && $(target).length > 0) {
           const offset = $(target).offset().top - $("header").outerHeight();
@@ -175,17 +184,17 @@
      * Init Header
      */
     initHeader() {
-        const $header = $(".header");
-        // Init Smartmenus
-        $(".header-menu").smartmenus({
-          collapsibleBehavior: "accordion",
-          subIndicatorsText: ''
-        });
-        // Hamburger
-        $(".hamburger").on("click", function () {
-          $header.toggleClass("is-opened");
-          $(".header-menu").slideToggle();
-        });
+      const $header = $(".header");
+      // Init Smartmenus
+      $(".header-menu").smartmenus({
+        collapsibleBehavior: "accordion",
+        subIndicatorsText: ""
+      });
+      // Hamburger
+      $(".hamburger").on("click", function() {
+        $header.toggleClass("is-opened");
+        $(".header-menu").slideToggle();
+      });
     },
     /**
      * Init Content Slider
@@ -288,22 +297,22 @@
      */
     initAccordion() {
       // Show accordion on click
-      $('.accordion-header').on('click', function () {
-        let $parent = $(this).closest('.accordion');
-        $(this).toggleClass('active');
-        $('.accordion-content', $parent).slideToggle();
+      $(".accordion-header").on("click", function() {
+        const $parent = $(this).closest(".accordion");
+        $(this).toggleClass("active");
+        $(".accordion-content", $parent).slideToggle();
       });
       // expand all
-      $('.btn-expand-all').on('click', function () {
-        $(this).toggleClass('collapse');
-        if ($(this).hasClass('collapse')) {
-          $(this).text('Collapse All Days');
-          $('.accordion-header').addClass('active');
-          $('.accordion-content').slideDown();
+      $(".btn-expand-all").on("click", function() {
+        $(this).toggleClass("collapse");
+        if ($(this).hasClass("collapse")) {
+          $(this).text("Collapse All Days");
+          $(".accordion-header").addClass("active");
+          $(".accordion-content").slideDown();
         } else {
-          $(this).text('Expand All Days');
-          $('.accordion-header').removeClass('active');
-          $('.accordion-content').slideUp();
+          $(this).text("Expand All Days");
+          $(".accordion-header").removeClass("active");
+          $(".accordion-content").slideUp();
         }
       });
     },
@@ -313,27 +322,27 @@
     initSidebar() {
       // Active anchor links on scroll
       window.onscroll = () => {
-        let current = '';
-        const sections = document.querySelectorAll('.content-block');
-        const navLinks = document.querySelectorAll('.sidebar-menu a');
+        let current = "";
+        const sections = document.querySelectorAll(".content-block");
+        const navLinks = document.querySelectorAll(".sidebar-menu a");
         sections.forEach(section => {
           const sectionTop = section.offsetTop - 50;
           if (pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
+            current = section.getAttribute("id");
           }
         });
         navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
           }
         });
       };
       // add bold on click sidebar menu link
-      $('.sidebar-menu a').on('click', function() {
-        if( $(this).hasClass('active') ) return;
-        $('.sidebar-menu a.active').removeClass('active');
-        $(this).addClass('active');
+      $(".sidebar-menu a").on("click", function() {
+        if ($(this).hasClass("active")) return;
+        $(".sidebar-menu a.active").removeClass("active");
+        $(this).addClass("active");
       });
     }
   };

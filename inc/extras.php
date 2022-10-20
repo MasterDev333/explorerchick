@@ -33,17 +33,11 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 				);
 			}
 
-			// Disable for post types
-			// add_filter('use_block_editor_for_post_type', '__return_false', 10);
-			// add_action('init', 'my_remove_editor_from_post_type');
-			// function my_remove_editor_from_post_type() {
-			// remove_post_type_support( 'page', 'editor' );
-			// }
 
 			// Disable WordPress Admin Bar for all users
 			// add_filter( 'show_admin_bar', '__return_false' );
 
-			add_post_type_support( 'page', 'excerpt' );
+			// add_post_type_support( 'page', 'excerpt' );
 		}
 
 		/**
@@ -51,6 +45,7 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 		 */
 		public function add_filters() {
 			add_filter( 'body_class', array( $this, 'body_class' ) );
+			add_filter('use_block_editor_for_post_type', '__return_false', 10);
 		}
 
 		/**
@@ -61,6 +56,7 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 			add_action( 'init', array( $this, 'add_categories_to_pages' ) );
 			add_action( 'login_enqueue_scripts', array( $this, 'login_enqueue_scripts' ) );
 			add_action( 'widgets_init', array( $this, 'register_footer_widgets' ) );
+			add_action( 'init', array( $this, 'my_remove_editor_from_post_type' ) );
 			// If ACF is installed load acf fields from local json
 			if ( class_exists( 'ACF' ) ) {
 				add_action( 'acf/init', array( $this, 'acf_init' ) );
@@ -200,6 +196,10 @@ if ( ! class_exists( 'Theme_Extra' ) ) {
 		  
 		}
 		  
+		// Disable for post types
+		public function my_remove_editor_from_post_type() {
+			remove_post_type_support( 'post', 'editor' );
+		}
 	}
 
 	$extra = new Theme_Extra();

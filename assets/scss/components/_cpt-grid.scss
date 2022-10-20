@@ -1,0 +1,22 @@
+.cpt-grid {
+  padding: 30px 0;
+  @include mq(tablet) {
+    padding: 50px 0;
+  }
+  .section-heading {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .cpt-slides {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+    @include mq(phablet) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @include mq(desktop-small) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-gap: 50px;
+    }
+  }
+}

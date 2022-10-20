@@ -8,6 +8,10 @@
   border-bottom: 2px solid $pink;
   z-index: 100;
   @include adminbar-offset();
+  .page-template-blog &,
+  .archive & {
+    position: sticky;
+  }
   &-top {
     padding: 10px 0;
     background-color: $yellow;

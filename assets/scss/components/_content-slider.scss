@@ -9,6 +9,7 @@
 }
 .content-slide {
   &__img {
+    display: block;
     margin-bottom: 20px;
     height: 215px;
     border: 1px solid $pink;

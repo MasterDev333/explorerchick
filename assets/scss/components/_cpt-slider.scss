@@ -37,6 +37,7 @@
   }
   &__img {
     position: relative;
+    display: block;
     height: 215px;
     border-bottom: 1px solid $pink;
     @include when-inside('.cpt-slider--post') {
