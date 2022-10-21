@@ -1,5 +1,7 @@
 .blog-search {
+  position: relative;
   margin: 30px 0;
+  z-index: 3;
   @include mq(tablet) {
     margin: 45px 0;
   }

@@ -54,13 +54,42 @@
 	<section class="subscribe" id="subscribe">
 		<div class="container">
 			<div class="subscribe-inner">
-				<div class="subscribe-image a-right">
-					<img class="img-cover" src="assets/img/subscribe.png" alt="">
-				</div>
+				<?php
+				get_template_part_args(
+					'template-parts/content-modules-image',
+					array(
+						'v'   => 'guide_form_image',
+						'v2x' => false,
+						'is'  => false,
+						'c'   => 'img-cover',
+						'w'   => 'div',
+						'wc'  => 'subscribe-image a-right',
+						'o'   => 'o',
+					)
+				);
+				?>
 				<div class="subscribe-content a-left">
-					<h3 class="subscribe-heading text-uppercase">Get A Free training guide</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore mag.</p>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v'  => 'guide_form_heading',
+							't'  => 'h3',
+							'tc' => 'subscribe-heading text-uppercase',
+							'o'  => 'o',
+						)
+					);
+					?>
+					<?php
+					get_template_part_args(
+						'template-parts/content-modules-text',
+						array(
+							'v' => 'guide_form_content',
+							't' => 'div',
+							'o' => 'o',
+						)
+					);
+					?>
 					<form action="#" class="subscribe-form">
 						<div class="form-row">
 							<div class="form-col full-width">

@@ -113,9 +113,6 @@
               column-gap: 20px;
             }
           }
-          a {
-            display: inline-block;
-          }
         }
       }
       .column {
@@ -125,7 +122,9 @@
         }
         a {
           text-transform: capitalize;
-          @extend .link;
+          &:hover {
+            color: $pink;
+          }
         }
       }
     }

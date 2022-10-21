@@ -35,15 +35,17 @@
 				?>
 			<?php endif; ?>
 			<?php
-			foreach ( $content_modules as $module ) :
-				if ( 'subscribe' == $module['acf_fc_layout'] ) :
-					?>
-                    <a href="javascript:;" data-fancybox data-src="#trip-packet" class="btn btn-yellow btn-download-guide">
-                        <?php echo esc_html__( 'Download Trip Packet' ); ?>
-                    </a>
-					<?php
-				endif;
-			endforeach;
+			if ( $content_modules ) :
+				foreach ( $content_modules as $module ) :
+					if ( 'subscribe' == $module['acf_fc_layout'] ) :
+						?>
+						<a href="javascript:;" data-fancybox data-src="#trip-packet" class="btn btn-yellow btn-download-guide">
+							<?php echo esc_html__( 'Download Trip Packet' ); ?>
+						</a>
+						<?php
+					endif;
+				endforeach;
+			endif;
 			?>
 			<?php get_template_part( 'template-parts/social', 'share' ); ?>
 		</div>
@@ -199,22 +201,23 @@
 			?>
 			<?php if ( 'post' == get_post_type() ) : ?>
 				<?php get_template_part( 'template-parts/social', 'share' ); ?>
-			<div class="author-box">
-				<div class="author-box__image">
-					<img class="img-cover" src="assets/img/author photo.png" alt="">
+				<?php $author_id = get_the_author_meta( 'ID' ); ?>
+
+				<div class="author-box">
+					<div class="author-box__image">
+						<img class="img-cover" src="<?php echo esc_url( get_avatar_url( $author_id ) ); ?>" alt="">
+					</div>
+					<div class="author-box__content">
+						<h3 class="author-box__name">Meet <?php echo get_the_author_meta( 'Display Name' ); ?></h3>
+						<?php
+						$bio       = get_the_author_meta( 'user_description' );
+						if ( $bio ) :
+							?>
+							<p class="author-box__bio"><?php echo esc_html( $bio ); ?></p>
+						<?php endif; ?>
+						<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>" class="btn btn-yellow"><?php echo esc_html__( 'More From This Author' ); ?></a>
+					</div>
 				</div>
-				<div class="author-box__content">
-					<h3 class="author-box__name">Meet <?php echo get_the_author_meta( 'Display Name' ); ?></h3>
-					<?php
-					$author_id = get_the_author_meta( 'ID' );
-					$bio       = get_the_author_meta( 'user_description' );
-					if ( $bio ) :
-						?>
-						<p class="author-box__bio">><?php echo esc_html( $bio ); ?></p>
-					<?php endif; ?>
-					<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>" class="btn btn-yellow"><?php echo esc_html__( 'More From This Author' ); ?></a>
-				</div>
-			</div>
 			<?php endif; ?>
 		</div>
 	</div>
