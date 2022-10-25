@@ -62,8 +62,9 @@
     left: 0;
     background-color: $pink;
     font: 700 14px/1 $f-text;
-    text-transform: uppercase;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
     @include mq(tablet) {
       padding: 20px 40px;
     }
@@ -83,6 +84,7 @@
     color: $pink;
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 0.1em;
     @extend .link;
     @include mq(tablet) {
       margin-bottom: 25px;

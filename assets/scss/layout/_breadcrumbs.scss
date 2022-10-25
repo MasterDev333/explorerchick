@@ -1,10 +1,15 @@
 .breadcrumb {
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
   a {
     &:hover {
       color: #fff;
       text-decoration: underline;
     }
+  }
+  .sep {
+    display: inline-block;
+    margin: 0 10px;
   }
 }

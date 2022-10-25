@@ -59,12 +59,11 @@ function breadcrumb_trail( $args = array() ) {
 	if ( is_front_page() && ! $front_page ) {
 		return apply_filters( 'breadcrumb_trail', false );
 	}
-
-	if ( $show_home && is_front_page() ) {
-		$trail['trail_end'] = "{$show_home}";
-	} elseif ( $show_home ) {
-		$trail[] = '<a href="' . esc_url( home_url() . '/' ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home" class="trail-begin">' . $show_home . '</a>';
-	}
+	// if ( $show_home && is_front_page() ) {
+	// 	$trail['trail_end'] = "{$show_home}";
+	// } elseif ( $show_home ) {
+	// 	$trail[] = '<a href="' . esc_url( home_url() . '/' ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '" rel="home" class="trail-begin">' . $show_home . '</a>';
+	// }
 
 	if ( is_home() && ! is_front_page() ) {
 		$home_page = get_page( $wp_query->get_queried_object_id() );
@@ -101,12 +100,16 @@ function breadcrumb_trail( $args = array() ) {
 			$trail[] = '<a href="' . get_permalink( $wp_query->post->post_parent ) . '" title="' . esc_attr( get_the_title( $wp_query->post->post_parent ) ) . '">' . get_the_title( $wp_query->post->post_parent ) . '</a>';
 		} elseif ( is_single() ) {
 			$terms = get_the_term_list( $wp_query->post->ID, $single_tax, '', '<span class="sep_tax">, </span>', '' );
+			if ( 'post' == get_post_type() ) {
+				$trail[] = 'Blog Home';
+			}
 			if ( $single_tax && $terms ) {
 				$trail[] = $terms;
 			}
 		}
-
-		$trail['trail_end'] = get_the_title();
+		if ( 'post' != get_post_type() ) {
+			$trail['trail_end'] = get_the_title();
+		}
 	} elseif ( is_archive() ) {
 
 		if ( is_tax() || is_category() || is_tag() ) {
@@ -115,14 +118,17 @@ function breadcrumb_trail( $args = array() ) {
 			if ( ! isset( $trail['trail_end'] ) ) {
 				$trail['trail_end'] = '';
 			}
-
-			if ( is_category() && $term->parent ) {
-				$parents = get_category_parents( $term->parent, true, " {$separator} ", false );
-				if ( $parents ) {
-					$trail['trail_end'] = $parents;
-				}
+			// if ( is_category() && $term->parent ) {
+			// 	$parents = get_category_parents( $term->parent, true, " {$separator} ", false );
+			// 	if ( $parents ) {
+			// 		$trail['trail_end'] = $parents;
+			// 	}
+			// }
+			if ( 'trip' == get_post_type() ) {
+				$trail['trail_end'] .= 'All Trips' . $separator;
+			} else {
+				$trail['trail_end'] .= 'Blog Home' . $separator;
 			}
-
 			$trail['trail_end'] .= $term->name;
 		} elseif ( is_author() ) {
 			$trail['trail_end'] = get_the_author_meta( 'display_name', get_query_var( 'author' ) );

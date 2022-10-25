@@ -1,9 +1,14 @@
-<?php $content_modules = get_field( 'content_modules' ); ?>
+<?php
+$type = get_post_type();
+$content_modules = get_field( 'content_modules' );
+?>
 <section class="sidebar-content sidebar-content__scroller">
 	<div class="sidebar-content__inner container">
 		<div class="sidebar a-right">
 			<?php if ( have_rows( 'modules' ) ) : ?>
+			<?php if ( 'post' == $type ) : ?>
 			<h6><?php echo esc_html__( 'In This Article:' ); ?></h6>
+			<?php endif; ?>
 			<ul class="sidebar-menu">
 				<?php
 				while ( have_rows( 'modules' ) ) :
@@ -17,12 +22,12 @@
 				<?php endwhile; ?>
 			</ul>
 			<?php endif; ?>
-			<?php if ( 'post' == get_post_type() ) : ?>
+			<?php if ( 'post' == $type ) : ?>
 			<a href="#subscribe" class="btn btn-yellow btn-download-guide">
 				<?php echo esc_html__( 'Get A Free Training Guide' ); ?>
 			</a>
 			<?php endif; ?>
-			<?php if ( 'trip' == get_post_type() ) : ?>
+			<?php if ( 'trip' == $type ) : ?>
 				<?php
 				get_template_part_args(
 					'template-parts/content-modules-cta',
@@ -50,6 +55,7 @@
 			<?php get_template_part( 'template-parts/social', 'share' ); ?>
 		</div>
 		<div class="content a-left">
+			<?php if ( 'post' == $type ) : ?>
 			<div class="post-author">
 				<div class="post-author__icon">
 					<i class="fa-solid fa-feather"></i>
@@ -59,6 +65,7 @@
 					<p class="post-author__date"><?php echo get_the_date( 'F d, Y' ); ?></p>
 				</div>
 			</div>
+			<?php endif; ?>
 			<?php
 			if ( have_rows( 'modules' ) ) :
 				while ( have_rows( 'modules' ) ) :

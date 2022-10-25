@@ -43,17 +43,25 @@
     }
   }
   &__image {
+    flex-grow: 1;
     @include mq(tablet, max) {
       margin-bottom: 20px;
     }
+    @include mq(tablet) {
+      height: vw(405px);
+      max-height: 405px;
+    }
     img {
-      min-height: 405px;
+      @include cover-image;
     }
   }
   .btn {
     margin-top: 20px;
     @include mq(tablet) {
       margin-top: 40px;
+    }
+    &:hover {
+      border-color: #fff;
     }
   }
 }

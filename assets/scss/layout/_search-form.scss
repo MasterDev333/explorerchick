@@ -68,6 +68,9 @@
       @include mq(tablet) {
         margin-left: 30px;
       }
+      &:hover {
+        border-color: #fff;
+      }
     }
   }
 }

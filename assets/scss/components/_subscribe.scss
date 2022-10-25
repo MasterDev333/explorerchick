@@ -3,6 +3,11 @@
   @include mq(tablet, max) {
     padding-top: 30px;
   }
+  @include mq(tablet) {
+    @include when-inside('.fancybox-inner') {
+      max-width: 1000px;
+    }
+  }
   &-inner {
     @include mq(tablet) {
       display: flex;

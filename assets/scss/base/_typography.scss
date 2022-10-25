@@ -21,11 +21,15 @@ h2 {
 }
 .h3,
 h3 {
-  font: 700 20px/1.2 $f-text;
-  letter-spacing: 0.15em;
+  font: 600 20px/1.2 $f-heading;
+  letter-spacing: 0.1em;
   @include mq(tablet) {
     font-size: 32px;
   }
+}
+.h3-alt {
+  font-weight: 700;
+  font-family: $f-text;
 }
 .h6,
 h6 {

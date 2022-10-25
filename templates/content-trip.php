@@ -25,7 +25,9 @@
 					<?php
 					breadcrumb_trail(
 						array(
-							'separator' => '>',
+							'separator'  => '>',
+							'show_home'  => false,
+							'single_tax' => 'trip_category',
 						)
 					);
 					?>
@@ -94,8 +96,9 @@
 								get_template_part_args(
 									'template-parts/content-modules-text',
 									array(
-										'v' => 'heading',
-										't' => 'h3',
+										'v'  => 'heading',
+										't'  => 'h3',
+										'tc' => 'h3-alt',
 									)
 								);
 								?>
@@ -262,12 +265,39 @@
 			<?php elseif ( 'subscribe' == get_row_layout() ) : ?>
 				<section class="subscribe" id="trip-packet" style="display: none;">
 					<div class="subscribe-inner">
-						<div class="subscribe-image">
-							<img class="img-cover" src="assets/img/subscribe.png" alt="">
-						</div>
+						<?php
+						get_template_part_args(
+							'template-parts/content-modules-image',
+							array(
+								'v'   => 'image',
+								'is'  => false,
+								'v2x' => false,
+								'c'   => 'img-cover',
+								'w'   => 'div',
+								'wc'  => 'subscribe-image'
+							)
+						);
+						?>
 						<div class="subscribe-content">
-							<h3 class="subscribe-heading text-uppercase">Get A Free Trip Packet</h3>
-							<p>Download our trip packet for a printable itinerary, travel guide and more.</p>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v'  => 'heading',
+									't'  => 'h3',
+									'tc' => 'h3-alt subscribe-heading text-uppercase',
+								)
+							);
+							?>
+							<?php
+							get_template_part_args(
+								'template-parts/content-modules-text',
+								array(
+									'v' => 'content',
+									't' => 'p',
+								)
+							);
+							?>
 							<form action="#" class="subscribe-form">
 								<div class="form-row">
 									<div class="form-col full-width">

@@ -7,9 +7,14 @@ if ( have_rows( 'modules' ) ) :
 		?>
 		<?php
 		if ( 'hero' == get_row_layout() ) :
-			$image  = get_sub_field( 'image' );
-			$video  = get_sub_field( 'video' );
-			$type   = get_sub_field( 'type' );
+			$image = get_sub_field( 'image' );
+			$video = get_sub_field( 'video' );
+			$type  = get_sub_field( 'type' );
+			if ( 'default' == $type ) :
+				$heading_tag = 'h3';
+			else :
+				$heading_tag = 'h1';
+			endif;
 			$slider = get_sub_field( 'slider' );
 			?>
 			<!-- Hero Type: [<?php echo esc_html( $type ); ?>] -->
@@ -49,7 +54,7 @@ if ( have_rows( 'modules' ) ) :
 								'template-parts/content-modules-text',
 								array(
 									'v'  => 'heading',
-									't'  => 'h1',
+									't'  => $heading_tag,
 									'tc' => 'banner-heading a-up',
 								)
 							);
@@ -123,7 +128,7 @@ if ( have_rows( 'modules' ) ) :
 								</div>
 								<div class="form-field">
 									<label for="activities">Activities</label>
-									<select name="destinations" id="destinations" class="form-control">
+									<select name="activities" id="activities" class="form-control">
 										<option value="" disabled selected>Select</option>
 										<option value="">Activity 1</option>
 										<option value="">Activity 2</option>
@@ -160,7 +165,7 @@ if ( have_rows( 'modules' ) ) :
 							array(
 								'v'  => 'heading',
 								't'  => 'h3',
-								'tc' => 'section-heading a-up a-delay-1',
+								'tc' => 'h3-alt section-heading a-up a-delay-1',
 							)
 						);
 						?>
@@ -388,10 +393,10 @@ if ( have_rows( 'modules' ) ) :
 							?>
 							<div class="reason-content">
 								<?php if ( $heading ) : ?>
-								<h2 class="reason-heading">
+								<h3 class="reason-heading">
 									<span class="reason-number"><?php echo esc_html( get_row_index() ); ?></span>
 									<?php echo esc_html( $heading ); ?>
-								</h2>
+								</h3>
 								<?php endif; ?>
 								<?php
 								get_template_part_args(

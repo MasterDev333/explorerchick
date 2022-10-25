@@ -6,7 +6,7 @@
 					<?php
 					breadcrumb_trail(
 						array(
-							'separator' => '>',
+							'separator'  => '>',
 						)
 					);
 					?>

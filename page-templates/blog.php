@@ -8,16 +8,27 @@ global $post;
 <?php
 $posts = get_field( 'featured_blog' );
 if ( $posts ) :
-	foreach ( $posts as $post ) :
-		setup_postdata( $post );
-		?>
-		<section class="featured-blog a-up">
-			<div class="container">
-				<?php get_template_part( 'template-parts/featured', 'post' ); ?>
+	?>
+	<section class="featured-blog a-up">
+		<div class="container">
+			<div class="swiper featured-blog__slider">
+				<div class="swiper-wrapper">
+					<?php
+					foreach ( $posts as $post ) :
+						setup_postdata( $post );
+						?>
+						<div class="swiper-slide">
+							<?php get_template_part( 'template-parts/featured', 'post' ); ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
+				<?php if ( count( $posts ) > 1 ) : ?>
+				<div class="swiper-button-next"></div>
+				<?php endif; ?>
 			</div>
-		</section>
-		<?php
-	endforeach;
+		</div>
+	</section>
+	<?php
 endif;
 wp_reset_postdata();
 ?>
@@ -29,7 +40,7 @@ wp_reset_postdata();
 				'template-parts/content-modules-text',
 				array(
 					'v'  => 'search_form_heading',
-					't'  => 'h3',
+					't'  => 'h4',
 					'tc' => 'blog-search__title a-up',
 					'o'  => 'f',
 				)

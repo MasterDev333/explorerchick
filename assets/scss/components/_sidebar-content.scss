@@ -22,6 +22,7 @@
       padding-right: 20px;
       width: 100%;
       max-width: 400px;
+      z-index: 10;
     }
 
     @include mq(desktop-wide) {
@@ -55,6 +56,7 @@
 
   .content {
     padding-bottom: 50px;
+
     @include mq(tablet) {
       padding-bottom: 100px;
       padding-left: 20px;
@@ -121,6 +123,16 @@
         content: none;
       }
     }
+
+    &:first-child {
+      @include when-inside('.single-trip') {
+        padding-top: 0;
+
+        &::before {
+          content: none;
+        }
+      }
+    }
   }
 
   .general-content {
@@ -142,12 +154,14 @@
         margin-bottom: 24px;
       }
     }
+
     h3 {
       letter-spacing: 0.1em;
     }
 
     p {
       margin-bottom: 1em;
+
       a {
         color: $pink;
         @extend .link;
@@ -177,6 +191,22 @@
 
       &:hover {
         color: $yellow;
+      }
+    }
+    &__copy {
+      position: relative;
+      .copied {
+        position: absolute;
+        margin: 0;
+        padding: 5px;
+        border-radius: 10px;
+        font: 400 10px/14px $f-text;
+        text-transform: initial;
+        letter-spacing: 0.05em;
+        background-color: $yellow;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        color: #000;
+        z-index: 100;
       }
     }
   }
@@ -316,11 +346,14 @@
         }
       }
     }
+
     &-map {
       margin: 30px 0;
+
       @include mq(tablet) {
         margin: 50px 0;
       }
+
       img {
         display: block;
         width: 100%;

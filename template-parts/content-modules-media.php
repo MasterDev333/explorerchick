@@ -10,7 +10,7 @@ else :
 endif;
 ?>
 <?php if ( $video ) : ?>
-	<video loop playsinline muted preload="metadata" src="<?php echo esc_url( $video ); ?>"<?php echo $class ? ' class="' . $class . '"' : ''; ?>>
+	<video autoplay loop playsinline muted preload="metadata" src="<?php echo esc_url( $video ); ?>"<?php echo $class ? ' class="' . $class . '"' : ''; ?>>
 		<source src="<?php echo esc_url( $video ); ?>" type="video/mp4">
 	</video>
 <?php elseif ( $image ) : ?>

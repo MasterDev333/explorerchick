@@ -22,6 +22,7 @@
     }
     .price {
       margin-bottom: 20px;
+      font-family: $f-text;
       letter-spacing: 0.02em;
       @include mq(tablet) {
         margin-bottom: 50px;

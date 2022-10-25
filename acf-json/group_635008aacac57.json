@@ -25,7 +25,7 @@
             ],
             "return_format": "object",
             "min": "",
-            "max": 1,
+            "max": "",
             "elements": ""
         },
         {
@@ -88,5 +88,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1666189863
+    "modified": 1666709082
 }

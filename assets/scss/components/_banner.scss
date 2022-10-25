@@ -1,18 +1,29 @@
 .banner {
   position: relative;
   overflow: hidden;
-  height: 100vh;
   &--home {
     display: flex;
     align-items: center;
     justify-content: center;
     @include mq(tablet) {
       align-items: flex-end;
+      height: vw(860px);
+      max-height: 100vh;
+    }
+  }
+  &--default {
+    height: 100vh;
+    @include mq(tablet) {
+      height: vw(900px);
+      max-height: 100vh;
     }
   }
   &--slider {
     .swiper-slide {
-      height: 100vh;
+      @include mq(tablet) {
+        height: vw(700px);
+        max-height: 700px;
+      }
     }
   }
   &-bg {

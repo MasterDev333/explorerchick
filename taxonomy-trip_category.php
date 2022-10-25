@@ -31,7 +31,8 @@ if ( $gallery ) :
 				<?php
 				breadcrumb_trail(
 					array(
-						'separator' => '>',
+						'separator'  => '>',
+						'front_page' => false,
 					)
 				);
 				?>
