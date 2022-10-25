@@ -4,7 +4,7 @@
 @import 'abstracts/variables', 'abstracts/functions', 'abstracts/mixins';
 
 // 2. Vendors
-@import 'vendor/normalize', 'vendor/wp-core', 'vendor/swiper', 'vendor/jcf', 'vendor/fancybox';
+@import 'vendor/normalize', 'vendor/wp-core', 'vendor/swiper', 'vendor/jcf', 'vendor/fancybox', 'vendor/select2';
 
 // 3. Base stuff
 @import 'base/animation', 'base/base', 'base/fonts', 'base/typography', 'base/helpers';

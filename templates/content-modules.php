@@ -119,8 +119,7 @@ if ( have_rows( 'modules' ) ) :
 								</div>
 								<div class="form-field">
 									<label for="destinations">Destinations</label>
-									<select name="destinations" id="destinations" class="form-control">
-										<option value="" disabled selected>Select</option>
+									<select name="destinations" id="destinations" class="form-control" multiple="multiple">
 										<option value="Destination 1">Destination 1</option>
 										<option value="Destination 2">Destination 2</option>
 										<option value="Destination 3">Destination 3</option>
@@ -128,11 +127,10 @@ if ( have_rows( 'modules' ) ) :
 								</div>
 								<div class="form-field">
 									<label for="activities">Activities</label>
-									<select name="activities" id="activities" class="form-control">
-										<option value="" disabled selected>Select</option>
-										<option value="">Activity 1</option>
-										<option value="">Activity 2</option>
-										<option value="">Activity 3</option>
+									<select name="activities" id="activities" class="form-control" multiple="multiple">
+										<option value="Activity 1">Activity 1</option>
+										<option value="Activity 2">Activity 2</option>
+										<option value="Activity 3">Activity 3</option>
 									</select>
 								</div>
 							</div>

@@ -91,11 +91,16 @@
     plugins() {
       // eslint-disable-next-line no-undef
       $("img[data-src]").lazyload(); // Init Lazyload from https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js
-      jcf.replace(".jcf-select", "Select", {
-        wrapNative: false,
-        wrapNativeOnMobile: false,
-        fakeDropInBody: false,
-        maxVisibleItems: 100
+
+      $("select").each(function() {
+        let placeholder = $(this).attr("placeholder");
+        if (!placeholder) placeholder = "Select";
+        $(this).select2({
+          placeholder: {
+            id: "-1", // the value of the option
+            text: placeholder
+          }
+        });
       });
     },
 
@@ -123,13 +128,12 @@
         );
         helper.isElementExist(".accordion", self.initAccordion);
         helper.isElementExist(".sidebar", self.initSidebar);
-        helper.isElementExist(".search-form", self.initSearchForm);
         // Copy url to clipboard when click link on social share
         $(".social-share__copy").on("click", function() {
           const href = $(this).attr("data-url");
           $(this).append('<span class="copied">Copied</span>');
           setTimeout(() => {
-            $('.copied').remove();
+            $(".copied").remove();
           }, 1000);
           navigator.clipboard.writeText(href);
           return false;
@@ -348,15 +352,6 @@
         if ($(this).hasClass("active")) return;
         $(".sidebar-menu a.active").removeClass("active");
         $(this).addClass("active");
-      });
-    },
-    /**
-     * 
-     */
-    initSearchForm() {
-      $('.search-form .form-control').select2({
-        placeholder: "Select",
-        multiple: true
       });
     }
   };

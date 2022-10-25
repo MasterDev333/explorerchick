@@ -43,8 +43,7 @@ if ( $gallery ) :
 					<label for="">Filter By</label>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-calendar-days"></i>
-						<select name="month" id="month" class="jcf-select trip-category month">
-							<option disabled selected>Month</option>
+						<select name="month" id="month" class="jcf-select trip-category month" multiple placeholder="Month">
 							<option value="Jan">January (1)</option>
 							<option value="Feb">Feburary (5)</option>
 							<option value="Mar">March (7)</option>
@@ -61,8 +60,7 @@ if ( $gallery ) :
 					</div>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-map-location-dot"></i>
-						<select name="destination" id="destination" class="jcf-select trip-category destination">
-							<option disabled selected>Destination</option>
+						<select name="destination" id="destination" class="jcf-select trip-category destination" multiple placeholder="Destination">
 							<option value="US">United States</option>
 							<option value="RU">Russia</option>
 							<option value="CN">China</option>
@@ -70,8 +68,7 @@ if ( $gallery ) :
 					</div>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-boot"></i>
-						<select name="activities" id="activities" class="jcf-select trip-category activities">
-							<option disabled selected>Activities</option>
+						<select name="activities" id="activities" class="jcf-select trip-category activities" multiple placeholder="Activities">
 							<option value="backpacking">Backpacking</option>
 							<option value="hiking">Hiking</option>
 							<option value="safari">Safari</option>
@@ -79,8 +76,7 @@ if ( $gallery ) :
 					</div>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-clock"></i>
-						<select name="length" id="length" class="jcf-select trip-category length">
-							<option disabled selected>Length</option>
+						<select name="length" id="length" class="jcf-select trip-category length" multiple placeholder="Length">
 							<option value="1">1 Days</option>
 							<option value="2">2 Days</option>
 							<option value="3">3 Days</option>
@@ -88,8 +84,7 @@ if ( $gallery ) :
 					</div>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-mountain-sun"></i>
-						<select name="difficulty" id="difficulty" class="jcf-select trip-category difficulty">
-							<option disabled selected>Difficulty</option>
+						<select name="difficulty" id="difficulty" class="jcf-select trip-category difficulty" multiple placeholder="Difficulty">
 							<option value="beginner">Beginner</option>
 							<option value="easy">Easy</option>
 							<option value="normal">Normal</option>
@@ -99,8 +94,7 @@ if ( $gallery ) :
 					</div>
 					<div class="trip-category__wrapper">
 						<i class="fa-solid fa-bed"></i>
-						<select name="lodging" id="lodging" class="jcf-select trip-category lodging">
-							<option disabled selected>Lodging</option>
+						<select name="lodging" id="lodging" class="jcf-select trip-category lodging" multiple placeholder="Lodging">
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
