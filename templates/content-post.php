@@ -75,7 +75,7 @@
 						array(
 							'v'  => 'guide_form_heading',
 							't'  => 'h3',
-							'tc' => 'subscribe-heading text-uppercase',
+							'tc' => 'h3-alt subscribe-heading text-uppercase',
 							'o'  => 'o',
 						)
 					);
