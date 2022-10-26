@@ -5,6 +5,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 80vh;
     @include mq(tablet) {
       align-items: flex-end;
       height: vw(860px);
@@ -20,9 +21,16 @@
   }
   &--slider {
     .swiper-slide {
+      height: 500px;
       @include mq(tablet) {
         height: vw(700px);
         max-height: 700px;
+      }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      @include mq(tablet, max) {
+        display: none;
       }
     }
   }
@@ -35,7 +43,6 @@
     position: relative;
     z-index: 1;
     @include when-inside('.banner--home') {
-      margin-bottom: 50px;
       color: #fff;
       text-align: center;
       @include mq(tablet) {

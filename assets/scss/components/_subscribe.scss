@@ -1,8 +1,5 @@
 .subscribe {
   background: $pink;
-  @include mq(tablet, max) {
-    padding-top: 30px;
-  }
   @include mq(tablet) {
     @include when-inside('.fancybox-inner') {
       max-width: 1000px;
@@ -14,6 +11,9 @@
     }
   }
   &-image {
+    @include mq(tablet, max) {
+      display: none;
+    }
     @include mq(tablet) {
       flex: 0 0 calc((100% - 40px) / 3);
     }

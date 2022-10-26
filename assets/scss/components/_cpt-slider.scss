@@ -5,7 +5,9 @@
   }
   .swiper {
     margin-top: 25px;
-    margin-bottom: 5px;
+    &-wrapper {
+      padding-bottom: 5px;
+    }
     &-slide {
       height: auto;
     }

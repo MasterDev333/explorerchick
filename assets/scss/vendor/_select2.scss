@@ -42,7 +42,11 @@
     }
     .select2-search__field {
       margin: 0;
+      height: 16px;
       @extend .text-caption;
+      @include mq(tablet) {
+        height: 24px;
+      }
     }
   }
 }
@@ -69,7 +73,7 @@
 
   &.select2-container--open.select2-container--below {
     .select2-selection--multiple {
-      border-radius: 4px;
+      border-radius: 0;
     }
   }
 }

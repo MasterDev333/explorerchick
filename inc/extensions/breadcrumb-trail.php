@@ -102,6 +102,8 @@ function breadcrumb_trail( $args = array() ) {
 			$terms = get_the_term_list( $wp_query->post->ID, $single_tax, '', '<span class="sep_tax">, </span>', '' );
 			if ( 'post' == get_post_type() ) {
 				$trail[] = 'Blog Home';
+			} elseif ( 'trip' == get_post_type() ) {
+				$trail[] = 'All Trips';
 			}
 			if ( $single_tax && $terms ) {
 				$trail[] = $terms;

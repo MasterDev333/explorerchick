@@ -8,6 +8,8 @@
   &__title {
     margin-bottom: 15px;
     font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
     text-align: center;
   }
   &__inner {
@@ -50,6 +52,19 @@
       }
       &-opener {
         right: 20px;
+      }
+    }
+    .select2-container--default .select2-selection--multiple {
+      padding: 10px;
+      @include mq(tablet) {
+        padding: 20px 10px;
+      }
+    }
+    .select2-container .select2-selection .select2-search__field {
+      letter-spacing: 0;
+      @extend .text-normal;
+      @include mq(tablet) {
+        height: 19px;
       }
     }
   }

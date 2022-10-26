@@ -15,6 +15,9 @@
       padding: 30px 0;
     }
     &__inner {
+      @include mq(tablet, max) {
+        text-align: center;
+      }
       @include mq(tablet) {
         display: flex;
         align-items: center;
@@ -33,11 +36,17 @@
     }
     .btn {
       margin-left: 20px;
+      @include mq(tablet, max) {
+        padding: 5px;
+        font-size: 12px;
+        line-height: 14px;
+      }
     }
   }
   &-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     @include mq(tablet) {
-      display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
   }
@@ -47,6 +56,17 @@
       margin-bottom: 10px;
       color: $pink;
       font-weight: 700;
+    }
+    &:nth-child(2) {
+      @include mq(tablet, max) {
+        grid-column-start: 1;
+      }
+    }
+    &:nth-child(3) {
+      @include mq(tablet, max) {
+        grid-row-start: 1;
+        grid-column-start: 2;
+      }
     }
   }
   &-logo {
@@ -69,6 +89,9 @@
     }
   }
   &-subscribe {
+    @include mq(tablet, max) {
+      grid-column: 1/3;
+    }
     @include mq(tablet) {
       width: 400px;
     }

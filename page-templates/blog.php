@@ -59,8 +59,7 @@ wp_reset_postdata();
 					?>
 				<div class="form-col">
 					<div class="form-group">
-						<select name="" id="blog-categories" class="blog-categories jcf-select">
-							<option selected disabled value=""><?php echo esc_html__( 'Select Category' ); ?></option>
+						<select name="" id="blog-categories" class="blog-categories jcf-select" multiple placeholder="Select Category">
 							<?php foreach ( $categories as $category ) : ?>
 							<option value="<?php echo esc_url( get_term_link( $category ) ); ?>"><?php echo esc_html( $category->name ); ?></option>
 							<?php endforeach; ?>

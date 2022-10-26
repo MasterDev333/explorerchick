@@ -73,4 +73,12 @@
       }
     }
   }
+  .form-fields {
+    @include mq(tablet, max) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-gap: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }

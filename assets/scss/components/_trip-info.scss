@@ -1,13 +1,13 @@
 .trip-info {
   .btn-book-now {
-    position: absolute;
     padding: 2px 5px;
-    top: 10px;
-    right: 10px;
     border: 1px solid #fff;
     font-weight: 700;
     text-transform: uppercase;
     @include mq(tablet) {
+      position: absolute;
+      top: 10px;
+      right: 10px;
       top: 20px;
       right: 20px;
     }

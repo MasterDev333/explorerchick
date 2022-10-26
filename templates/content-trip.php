@@ -31,17 +31,19 @@
 						)
 					);
 					?>
+					<h1 class="card-box__heading"><?php echo esc_html( get_the_title() ); ?></h1>
 					<?php
 					get_template_part_args(
 						'template-parts/content-modules-cta',
 						array(
-							'v' => 'book_cta',
-							'c' => 'btn-book-now',
-							'o' => 'f',
+							'v'  => 'book_cta',
+							'c'  => 'btn-book-now',
+							'o'  => 'f',
+							'w'  => 'div',
+							'wc' => 'text-center',
 						)
 					);
 					?>
-					<h1 class="card-box__heading"><?php echo esc_html( get_the_title() ); ?></h1>
 				</div>
 				<div class="card-box__content">
 					<h6>AT A GLANCE</h6>

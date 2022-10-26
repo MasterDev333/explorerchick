@@ -255,7 +255,7 @@
                             "key": "field_635142298d199",
                             "label": "Map",
                             "name": "map",
-                            "type": "wysiwyg",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -265,10 +265,10 @@
                                 "id": ""
                             },
                             "default_value": "",
-                            "delay": 0,
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1
+                            "maxlength": "",
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
                         }
                     ],
                     "min": "",
@@ -361,5 +361,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1666269742
+    "modified": 1666785852
 }
